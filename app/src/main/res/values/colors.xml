@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ── Material 3 • LIGHT ── -->
+    <color name="md_theme_light_primary">#6750A4</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#EADDFF</color>
+    <color name="md_theme_light_onPrimaryContainer">#21005D</color>
+
+    <color name="md_theme_light_secondary">#625B71</color>
+    <color name="md_theme_light_onSecondary">#FFFFFF</color>
+
+    <color name="md_theme_light_surface">#FFFBFE</color>
+    <color name="md_theme_light_onSurface">#1C1B1F</color>
+    <color name="md_theme_light_background">#FFFBFE</color>
+
+    <!-- ── Material 3 • DARK  (добавлено для lint) ── -->
+    <color name="md_theme_dark_primary">#D0BCFF</color>
+    <color name="md_theme_dark_onPrimary">#381E72</color>
+    <color name="md_theme_dark_primaryContainer">#4F378B</color>
+    <color name="md_theme_dark_onPrimaryContainer">#EADDFF</color>
+
+    <color name="md_theme_dark_secondary">#CCC2DC</color>
+    <color name="md_theme_dark_onSecondary">#322F35</color>
+
+    <color name="md_theme_dark_surface">#1C1B1F</color>
+    <color name="md_theme_dark_onSurface">#E6E1E5</color>
+    <color name="md_theme_dark_background">#1C1B1F</color>
+
+    <!-- ── Цвета кувшинов ── -->
+    <color name="cat_necessary">#FF6D00</color>
+    <color name="cat_entertainment">#F50057</color>
+    <color name="cat_longterm">#2962FF</color>
+    <color name="cat_education">#00C853</color>
+    <color name="cat_investments">#AA00FF</color>
+    <color name="cat_charity">#C51162</color>
+
+    <!-- ── Псевдоним для старого имени ── -->
+    <!-- В light-конфигурации оставляем ссылку на LIGHT-primary -->
+    <color name="md_theme_primary">@color/md_theme_light_primary</color>
+
+</resources>

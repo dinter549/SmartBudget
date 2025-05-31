@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ТЁМНАЯ ТЕМА -->
+    <SwitchPreferenceCompat
+        android:key="pref_dark_mode"
+        android:title="Тёмная тема"
+        android:defaultValue="false" />
+
+    <!-- ПРОЦЕНТЫ КУВШИНОВ -->
+    <PreferenceCategory android:title="Процентное распределение дохода">
+
+        <EditTextPreference
+            android:key="pref_pct_necessary"
+            android:title="Необходимые расходы (%)"
+            android:defaultValue="55" />
+
+        <EditTextPreference
+            android:key="pref_pct_entertainment"
+            android:title="Развлечения (%)"
+            android:defaultValue="10" />
+
+        <EditTextPreference
+            android:key="pref_pct_longterm"
+            android:title="Долгосрочные накопления (%)"
+            android:defaultValue="10" />
+
+        <EditTextPreference
+            android:key="pref_pct_education"
+            android:title="Образование (%)"
+            android:defaultValue="10" />
+
+        <EditTextPreference
+            android:key="pref_pct_investments"
+            android:title="Инвестиции (%)"
+            android:defaultValue="10" />
+
+        <EditTextPreference
+            android:key="pref_pct_charity"
+            android:title="Благотворительность (%)"
+            android:defaultValue="5" />
+    </PreferenceCategory>
+
+    <!-- ПРОЧЕЕ -->
+    <PreferenceCategory android:title="Другое">
+
+        <Preference
+            android:key="pref_help"
+            android:title="Помощь"
+            android:summary="Памятка по методу 6 кувшинов" />
+
+        <Preference
+            android:key="pref_reset"
+            android:title="Сбросить данные"
+            android:summary="Удалить балансы, цели и историю расходов" />
+
+        <Preference
+            android:title="О приложении"
+            android:summary="SmartBudget · © 2025" />
+    </PreferenceCategory>
+</PreferenceScreen>

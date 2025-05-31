@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+    <!-- ───────── Карточка «Общий баланс» ───────── -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_total_balance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardElevation="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_total_balance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:gravity="center"
+            android:text="Общий баланс: 0 ₽"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ───────── Основное содержимое ───────── -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@id/card_total_balance"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ── Поле ввода дохода ── -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введите сумму дохода">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_income"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- ── Кнопка «Распределить доход» ── -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_distribute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Распределить доход" />
+
+            <!-- ─────────────────── 6 карточек кувшинов ─────────────────── -->
+
+            <!-- 1. Необходимые расходы -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_necessary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardElevation="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <!-- иконка -->
+                    <ImageView
+                        android:id="@+id/iv_jar_necessary"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_placeholder_jar"
+                        android:contentDescription="Кувшин"
+                        android:tint="?attr/colorPrimary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <!-- заголовок -->
+                    <TextView
+                        android:id="@+id/tv_label_necessary"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Необходимые расходы (55%)"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        app:layout_constraintStart_toEndOf="@id/iv_jar_necessary"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_edit_necessary"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- сумма -->
+                    <TextView
+                        android:id="@+id/tv_amount_necessary"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="0 ₽"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        app:layout_constraintStart_toStartOf="@id/tv_label_necessary"
+                        app:layout_constraintTop_toBottomOf="@id/tv_label_necessary" />
+
+                    <!-- карандаш -->
+                    <ImageButton
+                        android:id="@+id/btn_edit_necessary"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:backgroundTint="?attr/colorSecondaryContainer"
+                        android:contentDescription="Редактировать"
+                        android:src="@drawable/ic_edit_24"
+                        android:tint="?attr/colorOnSecondaryContainer"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 2. Развлечения -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_entertainment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardElevation="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/iv_jar_entertainment"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_placeholder_jar"
+                        android:contentDescription="Кувшин"
+                        android:tint="?attr/colorPrimary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_label_entertainment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Развлечения (10%)"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        app:layout_constraintStart_toEndOf="@id/iv_jar_entertainment"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_edit_entertainment"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_amount_entertainment"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="0 ₽"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        app:layout_constraintStart_toStartOf="@id/tv_label_entertainment"
+                        app:layout_constraintTop_toBottomOf="@id/tv_label_entertainment" />
+
+                    <ImageButton
+                        android:id="@+id/btn_edit_entertainment"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:backgroundTint="?attr/colorSecondaryContainer"
+                        android:contentDescription="Редактировать"
+                        android:src="@drawable/ic_edit_24"
+                        android:tint="?attr/colorOnSecondaryContainer"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 3. Долгосрочные накопления -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_longterm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardElevation="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/iv_jar_longterm"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_placeholder_jar"
+                        android:contentDescription="Кувшин"
+                        android:tint="?attr/colorPrimary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_label_longterm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Долгосрочные накопления (10%)"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        app:layout_constraintStart_toEndOf="@id/iv_jar_longterm"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_edit_longterm"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_amount_longterm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="0 ₽"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        app:layout_constraintStart_toStartOf="@id/tv_label_longterm"
+                        app:layout_constraintTop_toBottomOf="@id/tv_label_longterm" />
+
+                    <ImageButton
+                        android:id="@+id/btn_edit_longterm"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:backgroundTint="?attr/colorSecondaryContainer"
+                        android:contentDescription="Редактировать"
+                        android:src="@drawable/ic_edit_24"
+                        android:tint="?attr/colorOnSecondaryContainer"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 4. Образование -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_education"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardElevation="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/iv_jar_education"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_placeholder_jar"
+                        android:contentDescription="Кувшин"
+                        android:tint="?attr/colorPrimary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_label_education"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Образование (10%)"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        app:layout_constraintStart_toEndOf="@id/iv_jar_education"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_edit_education"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_amount_education"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="0 ₽"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        app:layout_constraintStart_toStartOf="@id/tv_label_education"
+                        app:layout_constraintTop_toBottomOf="@id/tv_label_education" />
+
+                    <ImageButton
+                        android:id="@+id/btn_edit_education"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:backgroundTint="?attr/colorSecondaryContainer"
+                        android:contentDescription="Редактировать"
+                        android:src="@drawable/ic_edit_24"
+                        android:tint="?attr/colorOnSecondaryContainer"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 5. Инвестиции и накопления -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_investments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardElevation="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/iv_jar_investments"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_placeholder_jar"
+                        android:contentDescription="Кувшин"
+                        android:tint="?attr/colorPrimary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_label_investments"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Инвестиции и накопления (10%)"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        app:layout_constraintStart_toEndOf="@id/iv_jar_investments"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_edit_investments"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_amount_investments"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="0 ₽"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        app:layout_constraintStart_toStartOf="@id/tv_label_investments"
+                        app:layout_constraintTop_toBottomOf="@id/tv_label_investments" />
+
+                    <ImageButton
+                        android:id="@+id/btn_edit_investments"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:backgroundTint="?attr/colorSecondaryContainer"
+                        android:contentDescription="Редактировать"
+                        android:src="@drawable/ic_edit_24"
+                        android:tint="?attr/colorOnSecondaryContainer"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 6. Благотворительность -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_charity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="32dp"
+                app:cardElevation="4dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/iv_jar_charity"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_placeholder_jar"
+                        android:contentDescription="Кувшин"
+                        android:tint="?attr/colorPrimary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_label_charity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Благотворительность (5%)"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                        app:layout_constraintStart_toEndOf="@id/iv_jar_charity"
+                        app:layout_constraintEnd_toStartOf="@+id/btn_edit_charity"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_amount_charity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="0 ₽"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        app:layout_constraintStart_toStartOf="@id/tv_label_charity"
+                        app:layout_constraintTop_toBottomOf="@id/tv_label_charity" />
+
+                    <ImageButton
+                        android:id="@+id/btn_edit_charity"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:backgroundTint="?attr/colorSecondaryContainer"
+                        android:contentDescription="Редактировать"
+                        android:src="@drawable/ic_edit_24"
+                        android:tint="?attr/colorOnSecondaryContainer"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- ───────── Нижняя навигационная панель ───────── -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
